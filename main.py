@@ -23,6 +23,9 @@ class Die:
 outcomes_a = []
 mean_a = 0
 
+m = 0
+
+
 
 def roll_a():
     global mean_a
