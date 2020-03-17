@@ -21,14 +21,14 @@ class Controller:
         print("controller - add a button pressed")
         self.view.add_die(self.view.count_a, self.view.combobox_list_a, self.view.label_list_a, self.view.entry_list_a,
                           self.view.root, 0)
-        # self.view.count_a += 1
-        # I have no idea why it works without that line
+        self.view.count_a += 1
 
     def add_b_button_pressed(self):
         print("controller - add b button pressed")
         self.view.add_die(self.view.count_b, self.view.combobox_list_b, self.view.label_list_b, self.view.entry_list_b,
                           self.view.root, 5)
-        self.view.count_b += 1 # I have no idea why it needs this line, when adding to set A works just fine
+        self.view.count_b += 1
+
 
 
     def remove_a_button_pressed(self):
@@ -36,15 +36,16 @@ class Controller:
         if self.view.count_a != 0: # I have no idea why this line has to be here not in function remove_die
             self.view.remove_die(self.view.count_a, self.view.combobox_list_a,
                                  self.view.label_list_a, self.view.entry_list_a)
-            self.view.count_a -= 1 # I have no idea why this line has to be here not in function remove_die
+            self.view.count_a -= 1
+
 
 
     def remove_b_button_pressed(self):
         print("controller - remove a button pressed")
-        if self.view.count_a != 0: # I have no idea why this line has to be here not in function remove_die
+        if self.view.count_b != 0: # Remains to be fixed
             self.view.remove_die(self.view.count_b, self.view.combobox_list_b,
                                  self.view.label_list_b, self.view.entry_list_b)
-            self.view.count_b -= 1 # I have no idea why this line has to be here not in function remove_die
+            self.view.count_b -= 1 # Remains to be fixed
 
 
     def compare_button_pressed(self):
