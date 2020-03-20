@@ -7,7 +7,7 @@ from pubsub import pub
 class Controller:
     def __init__(self, parent):
         self.parent = parent
-        # self.model = Model()
+        self.model = Model()
         self.view = View(parent)
         self.view.setup()
 
@@ -31,6 +31,7 @@ class Controller:
 
 
 
+
     def remove_a_button_pressed(self):
         print("controller - remove a button pressed")
         if self.view.count_a != 0: # I have no idea why this line has to be here not in function remove_die
@@ -50,6 +51,20 @@ class Controller:
 
     def compare_button_pressed(self):
         print("controller - compare button pressed")
+        if self.model.value_check(self.view.count_a, self.view.entry_list_a, self.view.entry_modifier_a0)\
+                                  and self.model.value_check(self.view.count_b, self.view.entry_list_b,
+                                                             self.view.entry_modifier_b0):
+            self.model.average_outcome_a = self.model.roll_set(self.view.count_a, self.view.entry_list_a,
+                                                               self.view.entry_modifier_a0, self.model.outcome_optional,
+                                                               self.view.combobox_list_a, self.view.combobox_die_a0)
+
+            self.model.average_outcome_b = self.model.roll_set(self.view.count_b, self.view.entry_list_b,
+                                                               self.view.entry_modifier_b0, self.model.outcome_optional,
+                                                               self.view.combobox_list_b, self.view.combobox_die_b0)
+            self.view.build_histogram(self.model.average_outcome_a, self.model.average_outcome_b)
+        else:
+            self.view.error_modifier()
+
 
 
 if __name__ == "__main__":

@@ -1,6 +1,9 @@
 from tkinter import *
 from tkinter import ttk
+from tkinter import messagebox
 from pubsub import *
+import matplotlib.pyplot as plt
+
 
 class View:
     def __init__(self, parent):
@@ -16,7 +19,6 @@ class View:
         self.label_list_b = []
         self.entry_list_b = []
         return
-
 
     def setup(self):
         self.create_widgets()
@@ -94,6 +96,17 @@ class View:
         combobox_list[count - 1].grid_forget()
         label_list[count - 1].grid_forget()
         entry_list[count - 1].grid_forget()
+
+    def build_histogram(self, mean_a, mean_b):
+        plt.title("Average rolls of sets", fontsize=24)
+        plt.xlabel("Set", fontsize=14)
+        plt.ylabel("Average value", fontsize=14)
+        plt.bar([1, 2], [mean_a, mean_b])
+        plt.xticks([1, 2], ("Set A", "Set B"))
+        plt.show()
+
+    def error_modifier(self):
+        messagebox.showerror("Error!", "Modifiers accept numbers only!")
 
     def remove_die_a(self):
         pub.sendMessage("Remove a button pressed")
