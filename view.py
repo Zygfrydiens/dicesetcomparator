@@ -27,28 +27,40 @@ class View:
     def create_widgets(self):
         # Set A
         self.label_set_a = Label(self.root, text="Set A")
+
         self.button_remove_a = Button(self.root, text="-", command=self.remove_die_a)
         self.button_remove_a.config(width=2, height=1)
         self.button_add_a = Button(self.root, text="+", command=self.add_die_a)
         self.button_add_a.config(width=2, height=1)
+
         self.combobox_die_a0 = ttk.Combobox(self.root, width=2, state='readonly')
         self.combobox_die_a0['values'] = (4, 6, 8, 10, 12, 20, 100)
+        self.combobox_die_a0.current(0)
+
         self.label_plus_a0 = Label(self.root, text="+")
+
         self.entry_modifier_a0 = Entry(self.root, width=5)
+        self.entry_modifier_a0.insert(END, '0')
 
         # Space between sets
         self.label_space = Label(self.root, text="               ")
 
         # Set B
         self.label_set_b = Label(self.root, text="Set B")
+
         self.button_remove_b = Button(self.root, text="-", command=self.remove_die_b)
         self.button_remove_b.config(width=2, height=1)
         self.button_add_b = Button(self.root, text="+", command=self.add_die_b)
         self.button_add_b.config(width=2, height=1)
+
         self.label_plus_b0 = Label(self.root, text="+")
+
         self.combobox_die_b0 = ttk.Combobox(self.root, width=2, state='readonly')
         self.combobox_die_b0['values'] = (4, 6, 8, 10, 12, 20, 100)
+        self.combobox_die_b0.current(0)
+
         self.entry_modifier_b0 = Entry(self.root, width=5)
+        self.entry_modifier_b0.insert(END, '0')
 
         # Compare button
         self.button_compare = Button(self.root, text="Compare!", command=self.compare)
@@ -81,6 +93,7 @@ class View:
         # adding combobox
         combobox_list.append(ttk.Combobox(root, width=2, state='readonly'))
         combobox_list[count]['values'] = (4, 6, 8, 10, 12, 20, 100)
+        combobox_list[count].current(0)
         combobox_list[count].grid(row=count + 3, column=combobox_column)
 
         # adding label
@@ -89,6 +102,7 @@ class View:
 
         # adding modifier
         entry_list.append(Entry(root, width=5))
+        entry_list[count].insert(END, '0')
         entry_list[count].grid(row=count + 3, column=combobox_column + 2)
 
     # Defining remove 'combobox' + 'modifier' from GUI function
